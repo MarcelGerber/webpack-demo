@@ -1,37 +1,33 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const Visualizer = require('webpack-visualizer-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
-  mode: 'development',
+  cache: {
+    type: "filesystem",
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
+  infrastructureLogging: {
+    debug: /webpack\.cache/,
+  },
   entry: {
-    app: './src/main.js'
-   },
-  devtool: 'inline-source-map',
+    app: "./src/main.js",
+  },
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Lazy Loading'
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new Visualizer(),
-    new BundleAnalyzerPlugin()
-  ],
+  plugins: [],
   output: {
-  	filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-   	path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  }
+    filename: "[name].bundle.js",
+    chunkFilename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
+  },
 };
