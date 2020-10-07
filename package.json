@@ -10,13 +10,17 @@
     "hot": "webpack-dev-server --hotOnly",
     "server": "node server.js",
     "dev-server": "node dev-server.js",
-    "build": "webpack"
+    "build": "webpack",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@storybook/react": "6.0.26",
+    "@babel/core": "^7.11.6",
+    "@storybook/react": "^6.0.26",
+    "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "file-loader": "^6.1.0",
     "mini-css-extract-plugin": "0.12.0",
